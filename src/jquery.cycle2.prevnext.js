@@ -1,4 +1,4 @@
-/*! prevnext plugin for Cycle2;  version: 20130709 */
+/*! prevnext plugin for Cycle2;  version: 20140408 */
 (function($) {
 "use strict";
 
@@ -26,9 +26,11 @@ $(document).on( 'cycle-initialized', function( e, opts ) {
         var nextEvent = opts.swipeVert ? 'swipeUp.cycle' : 'swipeLeft.cycle swipeleft.cycle';
         var prevEvent = opts.swipeVert ? 'swipeDown.cycle' : 'swipeRight.cycle swiperight.cycle';
         opts.container.on( nextEvent, function(e) {
+            opts._tempFx = opts.swipeFx;
             opts.API.next();
         });
         opts.container.on( prevEvent, function() {
+            opts._tempFx = opts.swipeFx;
             opts.API.prev();
         });
     }
